@@ -21,6 +21,7 @@
     if (self = [super initWithFrame:frame])
     {
         [self setupSubviews];
+        self.isAdsorb = YES;
     }
     return self;
 }
@@ -89,14 +90,14 @@
     self.contentView.layer.cornerRadius = selfHeight * 0.5;
     self.contentView.clipsToBounds = YES;
     
-    [self setScrollViewOffsetForNode:self.i_selectedNodeIndex animated:NO];
+    [self setScrollViewOffsetForNode:self.selectedNodeIndex animated:NO];
 }
 
-- (void)setI_selectedNodeIndex:(NSInteger)i_selectedNodeIndex
+- (void)setselectedNodeIndex:(NSInteger)selectedNodeIndex
 {
-    _i_selectedNodeIndex = i_selectedNodeIndex;
+    _selectedNodeIndex = selectedNodeIndex;
     
-    [self setScrollViewOffsetForNode:i_selectedNodeIndex animated:YES];
+    [self setScrollViewOffsetForNode:selectedNodeIndex animated:YES];
 }
 
 - (void)setupSubviews
@@ -132,26 +133,44 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     [self adsorb];
+//    NSLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
+}
+
+- (CGFloat)partOffset
+{
+    return self.maxOffsetOfX / (self.nodeCount - 1);
 }
 
 - (void)adsorb
 {
-    CGFloat xOffset = self.sv_content.contentOffset.x;
-    NSInteger nodeIndex;
-    if (xOffset >= self.maxOffsetOfX * 0.5)
-    {
-        nodeIndex = 0;
-    }
-    else
-    {
-        nodeIndex = 1;
-    }
-    [self setScrollViewOffsetForNode:nodeIndex animated:YES];
-    if (self.i_selectedNodeIndex == nodeIndex)
+    if (self.isAdsorb == NO)
     {
         return;
     }
-    self.i_selectedNodeIndex = nodeIndex;
+    CGFloat xOffset = self.sv_content.contentOffset.x;
+    NSInteger nodeIndex = 0;
+    for (NSInteger i = 1; i < self.nodeCount; i++)
+    {
+        CGFloat nextSegment = self.partOffset * i;
+        if (xOffset < nextSegment)
+        {
+            if (xOffset + self.partOffset * 0.5 > nextSegment)
+            {
+                nodeIndex = self.nodeCount - i - 1;
+            }
+            else
+            {
+                nodeIndex = self.nodeCount - i;
+            }
+            break;
+        }
+    }
+    [self setScrollViewOffsetForNode:nodeIndex animated:YES];
+    if (self.selectedNodeIndex == nodeIndex)
+    {
+        return;
+    }
+    self.selectedNodeIndex = nodeIndex;
     if (self.bl_nodeIndexDidChanged)
     {
         self.bl_nodeIndexDidChanged(nodeIndex);
@@ -159,14 +178,17 @@
 }
 - (void)setScrollViewOffsetForNode:(NSInteger)nodeIndex animated:(BOOL)animated
 {
-    if (nodeIndex == 0)
+    CGFloat xOffset = self.maxOffsetOfX - self.partOffset * nodeIndex;
+    [self.sv_content setContentOffset:CGPointMake(xOffset, 0) animated:animated];
+}
+
+- (NSInteger)nodeCount
+{
+    if (_nodeCount < 2)
     {
-        [self.sv_content setContentOffset:CGPointMake(self.maxOffsetOfX, 0) animated:animated];
+        return 2;
     }
-    else
-    {
-        [self.sv_content setContentOffset:CGPointMake(0, 0) animated:animated];
-    }
+    return _nodeCount;
 }
 
 @end

@@ -18,12 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    XBSlideView *view = [[XBSlideView alloc] initWithFrame:CGRectMake(20, 100, 300, 100)];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
+    XBSlideView *view = [[XBSlideView alloc] initWithFrame:CGRectMake(10, 100, width, 55)];
     [self.view addSubview:view];
     view.bl_nodeIndexDidChanged = ^(NSInteger index) {
         NSLog(@"%ld",index);
     };
+//    view.nodeCount = 5;
 }
 
 

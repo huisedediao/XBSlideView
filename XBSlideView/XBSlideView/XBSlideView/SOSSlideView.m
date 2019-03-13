@@ -9,7 +9,7 @@
 #import "SOSSlideView.h"
 
 @interface SOSSlideView ()
-@property (nonatomic,strong) UILabel *redView;
+@property (nonatomic,strong) UIView *colorView;
 @end
 
 @implementation SOSSlideView
@@ -30,17 +30,17 @@
     CGFloat selfHeight = rect.size.height;
     CGFloat btnWidth = selfHeight - self.spaceOfBtnAndBorder * 2 - self.spaceOfContentAndBorder * 2;
     
-    self.redView = [UILabel new];
-    [self.contentView addSubview:self.redView];
-    [self.redView mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.colorView = [UIView new];
+    [self.contentView addSubview:self.colorView];
+    [self.colorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.spaceOfBtnAndBorder);
         make.height.mas_equalTo(btnWidth);
         make.right.equalTo(self.btn_sign);
         make.centerY.equalTo(self.contentView);
     }];
-    self.redView.layer.cornerRadius = btnWidth * 0.5;
-    self.redView.clipsToBounds = YES;
-    self.redView.backgroundColor = [UIColor redColor];
+    self.colorView.layer.cornerRadius = btnWidth * 0.5;
+    self.colorView.clipsToBounds = YES;
+    self.colorView.backgroundColor = self.color_btnBackground;
 
     [self.contentView bringSubviewToFront:self.sv_content];
 

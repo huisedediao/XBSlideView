@@ -33,6 +33,10 @@
     };
     view.lb_right.text = @"slide to send sos";
     view.btn_sign.str_titleNormal = @"sos";
+    view.color_contentViewBackground = [UIColor orangeColor];
+    view.color_btnTitle = [UIColor purpleColor];
+    view.color_labelTitle = [UIColor blackColor];
+    view.color_btnBackground = [UIColor yellowColor];
     self.slideView = view;
 }
 - (void)createSlideView_2

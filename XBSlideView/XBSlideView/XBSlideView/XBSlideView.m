@@ -22,6 +22,8 @@
     {
         [self setupSubviews];
         self.isAdsorb = YES;
+        self.spaceOfBtnAndBorder = 5;
+        self.spaceOfBtnAndLabel = 15;
     }
     return self;
 }
@@ -33,8 +35,8 @@
     UIColor *btnTitleColor = [UIColor whiteColor];
     UIColor *labelColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
     
-    CGFloat spaceOfBtnAndBorder = 5;
-    CGFloat spaceOfBtnAndLabel = 15;
+    CGFloat spaceOfBtnAndBorder = self.spaceOfBtnAndBorder;
+    CGFloat spaceOfBtnAndLabel = self.spaceOfBtnAndLabel;
     CGFloat selfWidth = rect.size.width;
     CGFloat selfHeight = rect.size.height;
     CGFloat btnWidth = selfHeight - spaceOfBtnAndBorder * 2;
@@ -190,5 +192,6 @@
     }
     return _nodeCount;
 }
+
 
 @end

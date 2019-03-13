@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UILabel *lb_left;
 @property (nonatomic,strong) UILabel *lb_right;
 @property (nonatomic,strong) XBButton *btn_sign;
+/** button到边缘的距离，默认5 */
+@property (nonatomic,assign) CGFloat spaceOfBtnAndBorder;
+/** button和文字的距离,默认15 */
+@property (nonatomic,assign) CGFloat spaceOfBtnAndLabel;
 /** 节点数量 */
 @property (nonatomic,assign) NSInteger nodeCount;
 /** 是否自动吸附最近的节点，默认yes */

@@ -264,7 +264,7 @@
 {
     if (_color_contentViewBackground == nil)
     {
-        _color_contentViewBackground = [[UIColor grayColor] colorWithAlphaComponent:0.5];
+        _color_contentViewBackground = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     }
     return _color_contentViewBackground;
 }

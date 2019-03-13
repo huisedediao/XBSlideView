@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UILabel *lb_left;
 @property (nonatomic,strong) UILabel *lb_right;
 @property (nonatomic,strong) XBButton *btn_sign;
-/** contentView的背景颜色，默认灰色0.5透明 */
+/** contentView的背景颜色，默认黑色0.5透明 */
 @property (nonatomic,strong) UIColor *color_contentViewBackground;
 /** btn_sign的背景颜色，默认红色 */
 @property (nonatomic,strong) UIColor *color_btnBackground;

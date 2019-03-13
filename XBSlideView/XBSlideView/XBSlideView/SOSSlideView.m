@@ -8,7 +8,9 @@
 
 #import "SOSSlideView.h"
 
-#define kColorGray [UIColor colorWithRed:190/255.0 green:190/255.0 blue:190/255.0 alpha:1]
+@interface SOSSlideView ()
+@property (nonatomic,strong) UILabel *redView;
+@end
 
 @implementation SOSSlideView
 
@@ -16,24 +18,34 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        self.backgroundColor = kColorGray;
-        self.lb_right.backgroundColor = kColorGray;
-        self.lb_right.textAlignment = NSTextAlignmentCenter;
+        
     }
     return self;
 }
 
 - (void)drawRect:(CGRect)rect
 {
+    [super drawRect:rect];
+    
     CGFloat selfHeight = rect.size.height;
     CGFloat btnWidth = selfHeight - self.spaceOfBtnAndBorder * 2 - self.spaceOfContentAndBorder * 2;
-    self.spaceOfContentAndBorder = 5;
-    self.layer.cornerRadius = selfHeight * 0.5;
-    self.clipsToBounds = YES;
-    self.spaceOfBtnAndBorder = 0;
-    self.spaceOfBtnAndLabel = - btnWidth * 0.5;
-    self.color_contentViewBackground = [UIColor redColor];
-    [super drawRect:rect];
+    
+    self.redView = [UILabel new];
+    [self.contentView addSubview:self.redView];
+    [self.redView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.spaceOfBtnAndBorder);
+        make.height.mas_equalTo(btnWidth);
+        make.right.equalTo(self.btn_sign);
+        make.centerY.equalTo(self.contentView);
+    }];
+    self.redView.layer.cornerRadius = btnWidth * 0.5;
+    self.redView.clipsToBounds = YES;
+    self.redView.backgroundColor = [UIColor redColor];
+
+    [self.contentView bringSubviewToFront:self.sv_content];
+
 }
+
+
 
 @end

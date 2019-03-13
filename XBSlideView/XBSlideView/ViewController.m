@@ -24,6 +24,7 @@
     view.bl_nodeIndexDidChanged = ^(NSInteger index) {
         NSLog(@"%ld",index);
     };
+    view.lb_right.text = @"slide to send sos";
 //    view.nodeCount = 5;
 }
 

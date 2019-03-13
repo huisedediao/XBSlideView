@@ -44,19 +44,16 @@
     
     self.maxOffsetOfX = selfWidth - spaceOfBtnAndBorder * 2 - btnWidth;
     
-    self.lb_left = ({
-        UILabel *label = [UILabel new];
-        [self.sv_content addSubview:label];
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.equalTo(self.sv_content);
-            make.height.mas_equalTo(selfHeight);
-            make.width.mas_equalTo(labelWidth);
-        }];
-        label.textAlignment = NSTextAlignmentRight;
-        label.text = @"left";
-        label.textColor = labelColor;
-        label;
-    });
+    
+    [self.sv_content addSubview:self.lb_left];
+    [self.lb_left mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.equalTo(self.sv_content);
+        make.height.mas_equalTo(selfHeight);
+        make.width.mas_equalTo(labelWidth);
+    }];
+    self.lb_left.textAlignment = NSTextAlignmentRight;
+    self.lb_left.textColor = labelColor;
+    
     
     self.btn_sign = ({
         XBButton *btn = [XBButton new];
@@ -73,21 +70,18 @@
         btn;
     });
     
-    self.lb_right = ({
-        UILabel *label = [UILabel new];
-        [self.sv_content addSubview:label];
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.btn_sign.mas_right).offset(spaceOfBtnAndLabel);
-            make.width.mas_equalTo(labelWidth);
-            make.centerY.equalTo(self.lb_left);
-            make.height.equalTo(self.lb_left);
-            make.right.lessThanOrEqualTo(self.sv_content);
-        }];
-        label.textAlignment = NSTextAlignmentLeft;
-        label.text = @"right";
-        label.textColor = labelColor;
-        label;
-    });
+    
+    [self.sv_content addSubview:self.lb_right];
+    [self.lb_right mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.btn_sign.mas_right).offset(spaceOfBtnAndLabel);
+        make.width.mas_equalTo(labelWidth);
+        make.centerY.equalTo(self.lb_left);
+        make.height.equalTo(self.lb_left);
+        make.right.lessThanOrEqualTo(self.sv_content);
+    }];
+    self.lb_right.textAlignment = NSTextAlignmentLeft;
+    self.lb_right.textColor = labelColor;
+    
     
     self.contentView.layer.cornerRadius = selfHeight * 0.5;
     self.contentView.clipsToBounds = YES;
@@ -135,7 +129,7 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     [self adsorb];
-//    NSLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
+    //    NSLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
 }
 
 - (CGFloat)partOffset
@@ -192,6 +186,22 @@
     }
     return _nodeCount;
 }
-
+- (UILabel *)lb_left
+{
+    if (_lb_left == nil)
+    {
+        _lb_left = [UILabel new];
+    }
+    return _lb_left;
+}
+- (UILabel *)lb_right
+{
+    if (_lb_right == nil)
+    {
+        _lb_right = [UILabel new];
+    }
+    return _lb_right;
+}
 
 @end
+

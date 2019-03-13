@@ -28,6 +28,7 @@
 		F17B20D12237B0B500EC63D2 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B20C72237B0B500EC63D2 /* MASViewAttribute.m */; };
 		F17B20D72237B25F00EC63D2 /* XBButton+CompatibleUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B20D32237B25F00EC63D2 /* XBButton+CompatibleUIButton.m */; };
 		F17B20D82237B25F00EC63D2 /* XBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B20D42237B25F00EC63D2 /* XBButton.m */; };
+		F17B20DF2238A37C00EC63D2 /* SOSSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B20DE2238A37C00EC63D2 /* SOSSlideView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,8 @@
 		F17B20D42237B25F00EC63D2 /* XBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBButton.m; sourceTree = "<group>"; };
 		F17B20D52237B25F00EC63D2 /* XBButton+CompatibleUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XBButton+CompatibleUIButton.h"; sourceTree = "<group>"; };
 		F17B20D62237B25F00EC63D2 /* XBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBButton.h; sourceTree = "<group>"; };
+		F17B20DD2238A37C00EC63D2 /* SOSSlideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SOSSlideView.h; sourceTree = "<group>"; };
+		F17B20DE2238A37C00EC63D2 /* SOSSlideView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SOSSlideView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,8 @@
 			children = (
 				F17B20312237A86200EC63D2 /* XBSlideView.h */,
 				F17B20322237A86200EC63D2 /* XBSlideView.m */,
+				F17B20DD2238A37C00EC63D2 /* SOSSlideView.h */,
+				F17B20DE2238A37C00EC63D2 /* SOSSlideView.m */,
 			);
 			path = XBSlideView;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				F17B20CA2237B0B500EC63D2 /* MASCompositeConstraint.m in Sources */,
 				F17B20332237A86200EC63D2 /* XBSlideView.m in Sources */,
 				F17B20CE2237B0B500EC63D2 /* View+MASAdditions.m in Sources */,
+				F17B20DF2238A37C00EC63D2 /* SOSSlideView.m in Sources */,
 				F17B20CB2237B0B500EC63D2 /* MASConstraintMaker.m in Sources */,
 				F17B20D82237B25F00EC63D2 /* XBButton.m in Sources */,
 				F17B20CF2237B0B500EC63D2 /* MASConstraint.m in Sources */,

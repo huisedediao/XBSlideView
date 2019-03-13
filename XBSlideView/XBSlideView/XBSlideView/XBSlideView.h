@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "XBButton+CompatibleUIButton.h"
-
+#import "Masonry.h"
+#import <objc/message.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +19,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UILabel *lb_left;
 @property (nonatomic,strong) UILabel *lb_right;
 @property (nonatomic,strong) XBButton *btn_sign;
-/** button到边缘的距离，默认5 */
+/** contentView的背景颜色，默认灰色0.5透明 */
+@property (nonatomic,strong) UIColor *color_contentViewBackground;
+/** btn_sign的背景颜色，默认红色 */
+@property (nonatomic,strong) UIColor *color_btnBackground;
+/** btn_sign的文字颜色，默认白色 */
+@property (nonatomic,strong) UIColor *color_btnTitle;
+/** lb_left\lb_right的文字颜色，默认白色0.7透明 */
+@property (nonatomic,strong) UIColor *color_labelTitle;
+/** contentView到自身边缘的距离，默认0 */
+@property (nonatomic,assign) CGFloat spaceOfContentAndBorder;
+/** button到contentView边缘的距离，默认5 */
 @property (nonatomic,assign) CGFloat spaceOfBtnAndBorder;
 /** button和文字的距离,默认15 */
 @property (nonatomic,assign) CGFloat spaceOfBtnAndLabel;

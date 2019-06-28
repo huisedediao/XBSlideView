@@ -124,7 +124,7 @@
     }
 }
 
-- (void)setselectedNodeIndex:(NSInteger)selectedNodeIndex
+- (void)setSelectedNodeIndex:(NSInteger)selectedNodeIndex
 {
     _selectedNodeIndex = selectedNodeIndex;
     
